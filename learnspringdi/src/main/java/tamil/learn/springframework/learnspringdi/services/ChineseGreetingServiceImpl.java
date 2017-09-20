@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Primary
-@Profile({"en_US", "default"})
-public class GreetingServiceImpl implements GreetingService {
+@Profile("zh_CN") //Profile names can be user defined, here we used the common locale code
+public class ChineseGreetingServiceImpl implements GreetingService {
 
-    public static final String HELLO_TEAM = "HELLO TEAM !!!!Primary Bean Service";
+    public static final String HELLO_TEAM = "你好团队!!! 小豆服务";
     @Override
     public String sayGreeting() {
         return HELLO_TEAM;

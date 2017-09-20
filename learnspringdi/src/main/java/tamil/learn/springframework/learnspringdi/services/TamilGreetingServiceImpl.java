@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Primary
-@Profile({"en_US", "default"})
-public class GreetingServiceImpl implements GreetingService {
+@Profile("ta_IN")
+public class TamilGreetingServiceImpl implements GreetingService {
 
-    public static final String HELLO_TEAM = "HELLO TEAM !!!!Primary Bean Service";
+    public static final String HELLO_TEAM = "வணக்கம் அணி!!!! முதன்மை பீன் சேவை";
     @Override
     public String sayGreeting() {
         return HELLO_TEAM;
