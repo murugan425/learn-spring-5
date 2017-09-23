@@ -1,0 +1,10 @@
+#YAML - Yet Another/Ain't Markup Language
+
+#YAML file cannot be picked by @PropertySource,
+#So as of now the best option is to create a application.yml file
+#which the spring will be able to load automatically.
+tamil:
+  jms:
+    url: MY JMS URL FROM YAML FIL
+    username: MY JMS USERNAME FROM YAML FIL
+    password: MY JMS PASSWORD FROM YAML FIL
