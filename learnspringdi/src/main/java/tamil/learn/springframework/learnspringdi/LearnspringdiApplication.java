@@ -3,12 +3,15 @@ package tamil.learn.springframework.learnspringdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import tamil.learn.springframework.learnspringdi.controllers.ConstructorInjectController;
 import tamil.learn.springframework.learnspringdi.controllers.FirstController;
 import tamil.learn.springframework.learnspringdi.controllers.PropertyInjectController;
 import tamil.learn.springframework.learnspringdi.controllers.SetterInjectController;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"tamil.learn.springframework"})
+//Optional in this case, use only if you use a package outside the package of the SpringBootApplication
 public class LearnspringdiApplication {
 
 	public static void main(String[] args) {
