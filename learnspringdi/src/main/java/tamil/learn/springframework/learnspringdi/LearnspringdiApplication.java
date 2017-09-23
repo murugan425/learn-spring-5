@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import tamil.learn.springframework.learnspringdi.common.TestDataSource;
 import tamil.learn.springframework.learnspringdi.common.TestEnvProp;
+import tamil.learn.springframework.learnspringdi.common.TestJmsBroker;
 import tamil.learn.springframework.learnspringdi.controllers.ConstructorInjectController;
 import tamil.learn.springframework.learnspringdi.controllers.FirstController;
 import tamil.learn.springframework.learnspringdi.controllers.PropertyInjectController;
@@ -34,5 +35,7 @@ public class LearnspringdiApplication {
         System.out.println("Accessed System value through Spring Environmet Variable "+testEnvProp.getSystemUserName());
         System.out.println("Accessed System value directly via Spring @Value Annotation :"+testEnvProp.JAVA_VERSION);
 
+        TestJmsBroker testJmsBroker = (TestJmsBroker) ctx.getBean(TestJmsBroker.class);
+        System.out.println("Accessed multiple property file values using @PropertySources :"+testJmsBroker.getJmsUrl());
 	}
 }
