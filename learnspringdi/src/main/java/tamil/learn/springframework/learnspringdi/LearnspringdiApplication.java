@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import tamil.learn.springframework.learnspringdi.common.TestDataSource;
+import tamil.learn.springframework.learnspringdi.common.TestEnvProp;
 import tamil.learn.springframework.learnspringdi.controllers.ConstructorInjectController;
 import tamil.learn.springframework.learnspringdi.controllers.FirstController;
 import tamil.learn.springframework.learnspringdi.controllers.PropertyInjectController;
@@ -24,5 +26,13 @@ public class LearnspringdiApplication {
 		System.out.println(ctx.getBean(PropertyInjectController.class).sayHello());
 		System.out.println(ctx.getBean(SetterInjectController.class).sayHello());
 		System.out.println(ctx.getBean(ConstructorInjectController.class).sayHello());
+
+		TestDataSource testDataSource = (TestDataSource) ctx.getBean(TestDataSource.class);
+		System.out.println("Reading value from external Property File :"+ testDataSource.getDbUserName());
+
+        TestEnvProp testEnvProp = (TestEnvProp) ctx.getBean(TestEnvProp.class);
+        System.out.println("Accessed System value through Spring Environmet Variable "+testEnvProp.getSystemUserName());
+        System.out.println("Accessed System value directly via Spring @Value Annotation :"+testEnvProp.JAVA_VERSION);
+
 	}
 }
