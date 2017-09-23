@@ -29,7 +29,7 @@ public class LearnspringdiApplication {
 		System.out.println(ctx.getBean(ConstructorInjectController.class).sayHello());
 
 		TestDataSource testDataSource = (TestDataSource) ctx.getBean(TestDataSource.class);
-		System.out.println("Reading value from external Property File :"+ testDataSource.getDbUserName());
+		System.out.println("Reading value from external Property File :"+ testDataSource.getDbUrl());
 
         TestEnvProp testEnvProp = (TestEnvProp) ctx.getBean(TestEnvProp.class);
         System.out.println("Accessed System value through Spring Environmet Variable "+testEnvProp.getSystemUserName());

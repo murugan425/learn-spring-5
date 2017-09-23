@@ -5,6 +5,27 @@
 #which the spring will be able to load automatically.
 tamil:
   jms:
-    url: MY JMS URL FROM YAML FIL
-    username: MY JMS USERNAME FROM YAML FIL
-    password: MY JMS PASSWORD FROM YAML FIL
+    url: MY JMS URL FROM YAML FILE
+    username: MY JMS USERNAME FROM YAML FILE
+    password: MY JMS PASSWORD FROM YAML FILE
+
+---
+spring:
+  profiles: ta_IN
+tamil:
+  jms:
+    url: MY JMS URL FROM YAML FILE CONNECTS TO INDIA
+
+---
+spring:
+  profiles: en_US
+tamil:
+  jms:
+    url: MY JMS URL FROM YAML FILE CONNECTS TO USA
+
+---
+spring:
+  profiles: zh_CN
+tamil:
+  jms:
+    url: MY JMS URL FROM YAML FILE CONNECTS TO CHINA
