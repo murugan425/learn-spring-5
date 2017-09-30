@@ -63,31 +63,35 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "Cover the vessel with a lid and let it cook for 15 minutes or till the rice is done.Garnish with some" +
                 " coriander and serve fresh");
 
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Brown Rice",new BigDecimal(1) , cupUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Green Capsicum",new BigDecimal(1),largeUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Onion",new BigDecimal(1),largeUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Ginger Garlic Paste",new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Curd",new BigDecimal(0.5),ounceUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Garam Masala",new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Cumin Seeds",new BigDecimal(0.5),teaSpoonUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Olive Oil", new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
-        greenCorianderRecipe.getIngredients().add(
-                new Ingredient("Coriander Powder", new BigDecimal(0.5),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+
+        greenCorianderRecipe.addIngredient(new Ingredient("Brown Rice",new BigDecimal(1) , cupUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Green Capsicum",new BigDecimal(1),largeUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Onion",new BigDecimal(1),largeUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Ginger Garlic Paste",new BigDecimal(1),teaSpoonUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Curd",new BigDecimal(0.5),ounceUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Garam Masala",new BigDecimal(1),teaSpoonUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Cumin Seeds",new BigDecimal(0.5),teaSpoonUOMOptional.get()));
+        greenCorianderRecipe.addIngredient(new Ingredient("Olive Oil", new BigDecimal(1),teaSpoonUOMOptional.get()));
+        greenCorianderRecipe.addIngredient( new Ingredient("Coriander Powder", new BigDecimal(0.5),teaSpoonUOMOptional.get()));
+
+        /*
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Brown Rice",new BigDecimal(1) , cupUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Green Capsicum",new BigDecimal(1),largeUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Onion",new BigDecimal(1),largeUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Ginger Garlic Paste",new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Curd",new BigDecimal(0.5),ounceUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Garam Masala",new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Cumin Seeds",new BigDecimal(0.5),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Olive Oil", new BigDecimal(1),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+        greenCorianderRecipe.getIngredients().add(new Ingredient("Coriander Powder", new BigDecimal(0.5),teaSpoonUOMOptional.get(), greenCorianderRecipe));
+        */
 
         Notes greenCorianderNotes = new Notes();
         greenCorianderNotes.setNotes("" +
                 "This brown rice recipe is loaded with fiber, minerals and vitamins like B6" +
                 " and niacin. Not just that, you get a dash of protein and the crunchy capsicum provides you" +
                 " with antioxidants like Vitamin C");
-        greenCorianderNotes.setRecipe(greenCorianderRecipe);
+        //greenCorianderNotes.setRecipe(greenCorianderRecipe);
         greenCorianderRecipe.setNotes(greenCorianderNotes);
 
         greenCorianderRecipe.getCategories().add(categoryRepository.findByCategoryname("Indian").get());
