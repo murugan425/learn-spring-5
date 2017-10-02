@@ -1,6 +1,7 @@
 /* Created by Murugan_Nagarajan on 9/28/2017 */
 package tamil.learn.springframework.learnspringrecipeapp.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Category;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
     private CategoryRepository categoryRepository;
@@ -38,6 +40,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Set<Recipe> getAllRecipes() {
+        log.debug(this.getClass().getSimpleName());
         Set<Recipe> recipes = new HashSet<Recipe>();
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         return recipes;
