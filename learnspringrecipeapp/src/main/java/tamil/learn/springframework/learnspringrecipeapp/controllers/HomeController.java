@@ -34,7 +34,7 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping({"/recipes"})
+    @RequestMapping({"/getrecipes"})
     public String getAllRecipes(Model model) {
         model.addAttribute("recipes", recipeService.getAllRecipes());
         return "recipes";
