@@ -1,0 +1,118 @@
+<!-- Created by Murugan_Nagarajan on 9/24/2017 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RECIPES LIST</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
+            th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}">
+    </script>
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" th:text="${recipe.description}">RECIPE DESCRIPTION!!!</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3"> Categories :</div>
+                            <div class="col-md-9">
+                                <ul>
+                                    <li>Category 1</li>
+                                    <li>Category 2</li>
+                                    <li>Category 3</li>
+                                    <li>Category 4</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><h5>Prep Time:</h5>
+                            </div>
+                            <div class="col-md-3">30 Min
+                            </div>
+                            <div class="col-md-3"><h5>Difficulty:</h5>
+                            </div>
+                            <div class="col-md-3">EASY
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><h5>Cook Time:</h5>
+                            </div>
+                            <div class="col-md-3">15 Min
+                            </div>
+                            <div class="col-md-3"><h5>Servings:</h5>
+                            </div>
+                            <div class="col-md-3">2
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><h5>Total Time:</h5>
+                            </div>
+                            <div class="col-md-3">90 Min
+                            </div>
+                            <div class="col-md-3"><h5>Source URL:</h5>
+                            </div>
+                            <div class="col-md-3">www.example.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">INGREDIENTS</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li>Ingrdient 1</li>
+                                <li>Ingrdient 2</li>
+                                <li>Ingrdient 3</li>
+                                <li>Ingrdient 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">DESCRIPTION</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            Description Content goes here
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">NOTES</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            Notes Content goes here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -10,9 +10,11 @@ import tamil.learn.springframework.learnspringrecipeapp.repositories.RecipeRepos
 import tamil.learn.springframework.learnspringrecipeapp.repositories.UnitOfMeasureRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
@@ -49,5 +51,22 @@ public class RecipeServiceImplTest {
 
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void getRecipeById() throws Exception {
+        Recipe recipe = new Recipe();
+        recipe.setId(2L);
+        recipe.setPrepTime(10);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(2L)).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.getRecipeById(2L);
+
+        assertNotNull("Not empty Recipe", recipeReturned);
+        assertEquals(recipeReturned, recipe);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 }

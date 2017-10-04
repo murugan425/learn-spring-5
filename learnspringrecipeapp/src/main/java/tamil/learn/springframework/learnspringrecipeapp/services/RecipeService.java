@@ -10,7 +10,11 @@ import java.util.Set;
 
 public interface RecipeService {
 
-    public Optional<UnitOfMeasure> findUOMByDescription(String uomDesc);
-    public Optional<Category> findCategoryByName(String categoryName);
-    public Set<Recipe> getAllRecipes();
+    Optional<UnitOfMeasure> findUOMByDescription(String uomDesc);
+
+    Optional<Category> findCategoryByName(String categoryName);
+
+    Set<Recipe> getAllRecipes();
+
+    Recipe getRecipeById(Long recipeId);
 }

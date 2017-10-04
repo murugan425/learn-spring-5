@@ -11,5 +11,6 @@ insert into unit_of_measure (description) values ('Slice');
 insert into unit_of_measure (description) values ('Cloves');
 insert into unit_of_measure (description) values ('Glass');
 insert into unit_of_measure (description) values ('Large');
+insert into unit_of_measure (description) values ('Kilogram');
 
 
