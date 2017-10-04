@@ -12,8 +12,7 @@ import tamil.learn.springframework.learnspringrecipeapp.services.RecipeService;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class RecipeControllerTest {
     @Mock
@@ -36,7 +35,8 @@ public class RecipeControllerTest {
         recipe.setId(2L);
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
         when(recipeService.getRecipeById(2L)).thenReturn(recipe);
-        mockMvc.perform(get("/recipe/view/" + recipe.getId())).andExpect(status().isOk()).
-                andExpect(view().name("showrecipe"));
+        mockMvc.perform(get("/recipe/view/" + recipe.getId())).andExpect(status().isOk())
+                .andExpect(view().name("showrecipe"))
+                .andExpect(model().attributeExists("recipe"));
     }
 }

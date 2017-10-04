@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RECIPES LIST</title>
+    <title>RECIPES DETAILS</title>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
             th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}">
@@ -12,8 +12,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <!-- <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="../jquery/jquery-3.1.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script> -->
 </head>
 <body>
+<!--/*@thymesVar id="recipe"  type="tamil.learn.springframework.learnspringrecipeapp.domain.Recipe"*/-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -26,42 +30,42 @@
                         <div class="row">
                             <div class="col-md-3"> Categories :</div>
                             <div class="col-md-9">
-                                <ul>
-                                    <li>Category 1</li>
-                                    <li>Category 2</li>
-                                    <li>Category 3</li>
-                                    <li>Category 4</li>
+                                <ul th:each="category: ${recipe.categories}">
+                                    <li th:text="${category.categoryname}">Category 1</li>
+                                    <li th:remove="all">Category 2</li>
+                                    <li th:remove="all">Category 3</li>
+                                    <li th:remove="all">Category 4</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3"><h5>Prep Time:</h5>
                             </div>
-                            <div class="col-md-3">30 Min
+                            <div class="col-md-3" th:text="${{recipe.prepTime}+ ' Min'}">15 Min
                             </div>
                             <div class="col-md-3"><h5>Difficulty:</h5>
                             </div>
-                            <div class="col-md-3">EASY
+                            <div class="col-md-3" th:text="${recipe.difficulty}">EASY
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3"><h5>Cook Time:</h5>
                             </div>
-                            <div class="col-md-3">15 Min
+                            <div class="col-md-3" th:text="${{recipe.cookTime}+ ' Min'}">15 Min
                             </div>
                             <div class="col-md-3"><h5>Servings:</h5>
                             </div>
-                            <div class="col-md-3">2
+                            <div class="col-md-3" th:text="${recipe.servings}">2
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3"><h5>Total Time:</h5>
                             </div>
-                            <div class="col-md-3">90 Min
+                            <div class="col-md-3" th:text="${{recipe.cookTime}+ ' Min'}">90 Min
                             </div>
                             <div class="col-md-3"><h5>Source URL:</h5>
                             </div>
-                            <div class="col-md-3">www.example.com
+                            <div class="col-md-3"><a th:href="${recipe.url}" th:text="${recipe.url}">www.example.com</a>
                             </div>
                         </div>
                     </div>
@@ -75,11 +79,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <ul>
-                                <li>Ingrdient 1</li>
-                                <li>Ingrdient 2</li>
-                                <li>Ingrdient 3</li>
-                                <li>Ingrdient 4</li>
+                            <ul th:each="ingredient: ${recipe.ingredients}">
+                                <li th:text="${{ingredient.amount + '  '
+                                + ingredient.uom.description + '  '
+                                + ingredient.description}}">Ingredient 1
+                                </li>
+                                <li th:remove="all">Ingredient 2</li>
+                                <li th:remove="all">Ingredient 3</li>
+                                <li th:remove="all">Ingredient 4</li>
                             </ul>
                         </div>
                     </div>
@@ -92,7 +99,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" th:text="${recipe.directions}">
                             Description Content goes here
                         </div>
                     </div>
@@ -105,7 +112,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" th:text="${recipe.notes.description}">
                             Notes Content goes here
                         </div>
                     </div>
