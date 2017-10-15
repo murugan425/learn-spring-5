@@ -46,12 +46,11 @@ public class ExportExcelSampleController {
         excelHead.setColumns(excelColumns);
         excelHead.setColumnCount(headerCount);
 
-        //导出文件
         SXSSFWorkbook workBook = new SXSSFWorkbook(100);
         ExcelHelper.getInstanse().buildExcelData(workBook, excelHead, "Sheet1", list);
 
         byte[] workBookDataBtyes = null;
-        // 导出到文件中
+        // exporting
         try {
             ByteArrayOutputStream workBookOutputStream = new ByteArrayOutputStream();
             workBook.write(workBookOutputStream);
