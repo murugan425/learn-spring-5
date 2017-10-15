@@ -54,14 +54,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         greenCorianderRecipe.setCookTime(45);
         greenCorianderRecipe.setPrepTime(15);
         greenCorianderRecipe.setDifficulty(Difficulty.EASY);
-        greenCorianderRecipe.setDirections("" +
+       /* greenCorianderRecipe.setDirections("" +
                 "In a non-stick vessel, heat oil and add cumin seeds.Once the seeds crackle, add the bay leaves, " +
                 "stir gently and add chopped onions. Cook the onions till they turn brown.Now add ginger garlic paste," +
                 " coriander mint paste and curd to the vessel and cook well. Once the masala is cooked well, you will" +
                 " start getting a lovely aroma and this is the correct time to stir in the dry masalas.Cook for " +
                 "5-6 minutes, time to add the crunchy capsicum. Once done, add the rice and 1 1/2 cups of water." +
                 "Cover the vessel with a lid and let it cook for 15 minutes or till the rice is done.Garnish with some" +
-                " coriander and serve fresh");
+                " coriander and serve fresh");*/
 
 
         greenCorianderRecipe.addIngredient(new Ingredient("Brown Rice",new BigDecimal(1) , cupUOMOptional.get()));
@@ -87,10 +87,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         */
 
         Notes greenCorianderNotes = new Notes();
-        greenCorianderNotes.setNotes("" +
+       /* greenCorianderNotes.setNotes("" +
                 "This brown rice recipe is loaded with fiber, minerals and vitamins like B6" +
                 " and niacin. Not just that, you get a dash of protein and the crunchy capsicum provides you" +
-                " with antioxidants like Vitamin C");
+                " with antioxidants like Vitamin C");*/
         //greenCorianderNotes.setRecipe(greenCorianderRecipe);
         greenCorianderRecipe.setNotes(greenCorianderNotes);
 
@@ -102,7 +102,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         chickenBiryani.setCookTime(60);
         chickenBiryani.setPrepTime(20);
         chickenBiryani.setDifficulty(Difficulty.HARD);
-        chickenBiryani.setDirections("Step 1"
+       /* chickenBiryani.setDirections("Step 1"
                 + " First, in order to marinate the chicken, take a large bowl, put greek yogurt, turmeric chili powder" +
                 " along with salt according one's taste. Then, add the chicken thighs in the mixture and keep aside for " +
                 "about 20-30 minutes so that the yogurt mixture is properly absorbed by the chicken. Also, soak saffron " +
@@ -128,7 +128,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 + "Step 6"
                 + "Lastly, cover the lid, turn the flame to low medium and let simmer for about 5 minutes. Once done, " +
                 "put it off and let the biryani stay covered for about another 10 minutes. Serve hot, along with raita" +
-                " or any chutney of your choice.");
+                " or any chutney of your choice.");*/
 
 
         chickenBiryani.addIngredient(new Ingredient("Boiled Basmati rice", new BigDecimal(3), cupUOMOptional.get()));
@@ -142,9 +142,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         chickenBiryani.addIngredient(new Ingredient("Coriander Powder", new BigDecimal(2), teaSpoonUOMOptional.get()));
 
         Notes chickenBiryaniNotes = new Notes();
-        chickenBiryaniNotes.setNotes("Make this scrumptious Chicken Biryani and see the heads turning your way as the " +
+        /*chickenBiryaniNotes.setNotes("Make this scrumptious Chicken Biryani and see the heads turning your way as the " +
                 "aroma of this delectable dish will be all over your house. Biryani, which when cooked perfectly can " +
-                "turn into a dish par excellence. Loved by all food lovers ");
+                "turn into a dish par excellence. Loved by all food lovers ");*/
         chickenBiryani.setNotes(chickenBiryaniNotes);
 
         chickenBiryani.getCategories().add(categoryRepository.findByCategoryname("Indian").get());

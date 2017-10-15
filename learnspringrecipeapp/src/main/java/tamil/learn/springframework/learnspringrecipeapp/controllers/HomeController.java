@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Category;
 import tamil.learn.springframework.learnspringrecipeapp.domain.UnitOfMeasure;
 import tamil.learn.springframework.learnspringrecipeapp.services.RecipeService;
-
 import java.util.Optional;
 
 @Controller
@@ -19,8 +18,8 @@ public class HomeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"","/","/index"})
-    public String getIndexPage(Model model){
+    @RequestMapping({"", "/", "/index"})
+    public String getIndexPage(Model model) {
 
         Optional<UnitOfMeasure> unitOfMeasureOptional = recipeService.findUOMByDescription("Ounce");
         Optional<Category> categoryOptional = recipeService.findCategoryByName("Chinese");
