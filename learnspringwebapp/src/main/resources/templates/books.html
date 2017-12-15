@@ -1,0 +1,25 @@
+<!-- Created by Murugan_Nagarajan on 9/14/2017 -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books View Page</title>
+</head>
+<body>
+<h2>Book List</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Book Name</th>
+        <th>Book ISBN</th>
+        <th>Book Publisher</th>
+    </tr>
+    <tr th:each="book:${books}">
+        <td th:text="${book.bookId}"></td>
+        <td th:text="${book.bookName}"></td>
+        <td th:text="${book.bookISBN}"></td>
+        <td th:text="${book.bookPublisher.publisherName}"></td>
+    </tr>
+</table>
+</body>
+</html>

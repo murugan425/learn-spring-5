@@ -1,0 +1,21 @@
+<!-- Created by Murugan_Nagarajan on 9/14/2017 -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors View Page</title>
+</head>
+<body>
+<h2>Book List</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Author Name</th>
+    </tr>
+    <tr th:each="author:${authors}">
+        <td th:text="${author.authorId}"></td>
+        <td th:text="${author.authorName}"></td>
+    </tr>
+</table>
+</body>
+</html>
