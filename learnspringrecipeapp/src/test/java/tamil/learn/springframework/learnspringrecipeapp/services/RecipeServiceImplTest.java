@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Sort;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
 import tamil.learn.springframework.learnspringrecipeapp.repositories.CategoryRepository;
 import tamil.learn.springframework.learnspringrecipeapp.repositories.RecipeRepository;
@@ -44,13 +45,13 @@ public class RecipeServiceImplTest {
         Set<Recipe> recipesData = new HashSet<>();
         recipesData.add(recipe);
 
-        when(recipeRepository.findAll()).thenReturn(recipesData);
+        when(recipeRepository.findAll(any(Sort.class))).thenReturn(recipesData);
 
         Set<Recipe> recipes = recipeService.getAllRecipes();
         recipes.iterator().forEachRemaining(recipeMocked -> System.out.println(recipeMocked));
 
         assertEquals(recipes.size(), 1);
-        verify(recipeRepository, times(1)).findAll();
+        verify(recipeRepository, times(1)).findAll(any(Sort.class));
     }
 
     @Test
@@ -67,6 +68,6 @@ public class RecipeServiceImplTest {
         assertNotNull("Not empty Recipe", recipeReturned);
         assertEquals(recipeReturned, recipe);
         verify(recipeRepository, times(1)).findById(anyLong());
-        verify(recipeRepository, never()).findAll();
+        verify(recipeRepository, never()).findAll(any(Sort.class));
     }
 }
