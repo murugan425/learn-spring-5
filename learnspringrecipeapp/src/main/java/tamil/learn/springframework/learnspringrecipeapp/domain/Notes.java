@@ -3,12 +3,14 @@ package tamil.learn.springframework.learnspringrecipeapp.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+@ToString(exclude = {"recipe"})
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +20,6 @@ public class Notes {
     private Recipe recipe;
 
     @Lob
-    private String notes;
+    private String description;
 
 }

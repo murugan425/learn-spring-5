@@ -36,8 +36,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         recipeRepository.saveAll(loadRecipes());
     }
 
-    public List<Recipe> loadRecipes() {
-        List<Recipe> recipes = new ArrayList<Recipe>();
+    private List<Recipe> loadRecipes() {
+        List<Recipe> recipes = new ArrayList<>();
 
         Optional<UnitOfMeasure> teaSpoonUOMOptional = generateUOM("Teaspoon");
         Optional<UnitOfMeasure> tableSpoonUOMOptional = generateUOM("Tablespoon");
@@ -54,6 +54,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         greenCorianderRecipe.setCookTime(45);
         greenCorianderRecipe.setPrepTime(15);
         greenCorianderRecipe.setDifficulty(Difficulty.EASY);
+        greenCorianderRecipe.setServings(3);
         greenCorianderRecipe.setDirections("" +
                 "In a non-stick vessel, heat oil and add cumin seeds.Once the seeds crackle, add the bay leaves, " +
                 "stir gently and add chopped onions. Cook the onions till they turn brown.Now add ginger garlic paste," +
@@ -87,7 +88,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         */
 
         Notes greenCorianderNotes = new Notes();
-        greenCorianderNotes.setNotes("" +
+        greenCorianderNotes.setDescription("" +
                 "This brown rice recipe is loaded with fiber, minerals and vitamins like B6" +
                 " and niacin. Not just that, you get a dash of protein and the crunchy capsicum provides you" +
                 " with antioxidants like Vitamin C");
@@ -96,12 +97,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         greenCorianderRecipe.getCategories().add(categoryRepository.findByCategoryname("Indian").get());
 
-
         Recipe chickenBiryani = new Recipe();
         chickenBiryani.setDescription("Biryani Rice Recipe");
         chickenBiryani.setCookTime(60);
         chickenBiryani.setPrepTime(20);
         chickenBiryani.setDifficulty(Difficulty.HARD);
+        chickenBiryani.setServings(2);
         chickenBiryani.setDirections("Step 1"
                 + " First, in order to marinate the chicken, take a large bowl, put greek yogurt, turmeric chili powder" +
                 " along with salt according one's taste. Then, add the chicken thighs in the mixture and keep aside for " +
@@ -142,13 +143,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         chickenBiryani.addIngredient(new Ingredient("Coriander Powder", new BigDecimal(2), teaSpoonUOMOptional.get()));
 
         Notes chickenBiryaniNotes = new Notes();
-        chickenBiryaniNotes.setNotes("Make this scrumptious Chicken Biryani and see the heads turning your way as the " +
+        chickenBiryaniNotes.setDescription("Make this scrumptious Chicken Biryani and see the heads turning your way as the " +
                 "aroma of this delectable dish will be all over your house. Biryani, which when cooked perfectly can " +
                 "turn into a dish par excellence. Loved by all food lovers ");
         chickenBiryani.setNotes(chickenBiryaniNotes);
 
         chickenBiryani.getCategories().add(categoryRepository.findByCategoryname("Indian").get());
-
+        //chickenBiryani.setUrl("https://indianhealthyrecipes.com/");
         recipes.add(chickenBiryani);
         recipes.add(greenCorianderRecipe);
         return recipes;

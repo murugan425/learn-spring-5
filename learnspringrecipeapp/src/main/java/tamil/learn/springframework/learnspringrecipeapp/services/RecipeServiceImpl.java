@@ -2,6 +2,7 @@
 package tamil.learn.springframework.learnspringrecipeapp.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Category;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
@@ -42,7 +43,24 @@ public class RecipeServiceImpl implements RecipeService {
     public Set<Recipe> getAllRecipes() {
         log.debug(this.getClass().getSimpleName());
         Set<Recipe> recipes = new HashSet<Recipe>();
-        recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
+        recipeRepository.findAll(sortByIdAsc()).iterator().forEachRemaining(recipes::add);
+        log.debug(recipes.toString());
         return recipes;
+    }
+
+    public Recipe getRecipeById(Long recipeId) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
+        if (!recipeOptional.isPresent()) {
+            throw new RuntimeException("Recipe Not Found.");
+        }
+        return recipeOptional.get();
+    }
+
+    private Sort sortByIdAsc() {
+        return new Sort(Sort.Direction.ASC, "id");
+    }
+
+    private Sort sortByIdDesc() {
+        return new Sort(Sort.Direction.DESC, "id");
     }
 }

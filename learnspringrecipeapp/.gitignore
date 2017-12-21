@@ -22,3 +22,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### User Excludes ###
+src/main/resources/bootstrap
+src/main/resources/jquery

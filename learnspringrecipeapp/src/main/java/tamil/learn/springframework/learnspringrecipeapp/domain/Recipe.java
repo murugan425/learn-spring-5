@@ -2,6 +2,7 @@
 package tamil.learn.springframework.learnspringrecipeapp.domain;
 
 import lombok.Data;
+import lombok.ToString;
 import tamil.learn.springframework.learnspringrecipeapp.enums.Difficulty;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Data
 @Entity
+@ToString(exclude = {"directions", "ingredients"})
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

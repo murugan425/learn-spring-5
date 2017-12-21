@@ -2,6 +2,7 @@
 package tamil.learn.springframework.learnspringrecipeapp.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+@ToString
 public class UnitOfMeasure {
 
     @Id
