@@ -23,13 +23,15 @@
                             <tr>
                                 <th>RECIPE ID</th>
                                 <th>RECIPE DESCRIPTION</th>
-                                <th>RECIPE DETAILS</th>
+                                <th>VIEW DETAILS</th>
+                                <th>UPDATE RECIPE</th>
                             </tr>
                             </thead>
                             <tr th:each="recipe : ${recipes}">
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.description}"></td>
-                                <td><a href="#" th:href="@{'recipe/view/'+${recipe.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/view'}">View</a></td>
+                                <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/update'}">Update</a></td>
                             </tr>
                         </table>
                     </div>

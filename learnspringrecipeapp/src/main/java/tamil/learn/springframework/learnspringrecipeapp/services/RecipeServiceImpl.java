@@ -76,6 +76,12 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeEntityToCommand.convert(savedRecipe);
     }
 
+    @Override
+    @Transactional
+    public RecipeCommand getRecipeCommandById(Long recipeId) {
+        return recipeEntityToCommand.convert(getRecipeById(recipeId));
+    }
+
     private Sort sortByIdAsc() {
         return new Sort(Sort.Direction.ASC, "id");
     }
