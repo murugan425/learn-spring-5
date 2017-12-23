@@ -3,8 +3,11 @@ package tamil.learn.springframework.learnspringrecipeapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import tamil.learn.springframework.learnspringrecipeapp.commands.RecipeCommand;
 import tamil.learn.springframework.learnspringrecipeapp.services.RecipeService;
 
 @Controller
@@ -20,5 +23,18 @@ public class RecipeController {
     public String getRecipeById(@PathVariable Long id, Model model) {
         model.addAttribute("recipe", recipeService.getRecipeById(id));
         return "showrecipe";
+    }
+
+    @RequestMapping({"/recipe/form"})
+    public String showRecipeForm(Model model) {
+        model.addAttribute("recipe", new RecipeCommand());
+        return "recipeform";
+    }
+
+    @PostMapping
+    @RequestMapping({"/recipe/save"})
+    public String saveRecipe(@ModelAttribute RecipeCommand recipeCommand) {
+        RecipeCommand savedRecipeCommand = recipeService.saveRecipe(recipeCommand);
+        return "redirect:/recipe/view/" + savedRecipeCommand.getId();
     }
 }

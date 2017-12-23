@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Sort;
+import tamil.learn.springframework.learnspringrecipeapp.converters.RecipeCommandToEntity;
+import tamil.learn.springframework.learnspringrecipeapp.converters.RecipeEntityToCommand;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
 import tamil.learn.springframework.learnspringrecipeapp.repositories.CategoryRepository;
 import tamil.learn.springframework.learnspringrecipeapp.repositories.RecipeRepository;
@@ -31,10 +33,17 @@ public class RecipeServiceImplTest {
     @Mock
     private UnitOfMeasureRepository unitOfMeasureRepository;
 
+    @Mock
+    private RecipeCommandToEntity recipeCommandToEntity;
+
+    @Mock
+    private RecipeEntityToCommand recipeEntityToCommand;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(categoryRepository, unitOfMeasureRepository, recipeRepository);
+        recipeService = new RecipeServiceImpl(categoryRepository, unitOfMeasureRepository, recipeRepository,
+                                recipeCommandToEntity, recipeEntityToCommand);
     }
 
     @Test

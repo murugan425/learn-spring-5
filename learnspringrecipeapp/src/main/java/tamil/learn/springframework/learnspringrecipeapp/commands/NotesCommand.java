@@ -11,6 +11,5 @@ import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
 @NoArgsConstructor
 public class NotesCommand {
     private Long id;
-    private Recipe recipe;
     private String description;
 }

@@ -4,6 +4,10 @@ package tamil.learn.springframework.learnspringrecipeapp.services;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import tamil.learn.springframework.learnspringrecipeapp.commands.RecipeCommand;
+import tamil.learn.springframework.learnspringrecipeapp.converters.RecipeCommandToEntity;
+import tamil.learn.springframework.learnspringrecipeapp.converters.RecipeEntityToCommand;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Category;
 import tamil.learn.springframework.learnspringrecipeapp.domain.Recipe;
 import tamil.learn.springframework.learnspringrecipeapp.domain.UnitOfMeasure;
@@ -21,12 +25,17 @@ public class RecipeServiceImpl implements RecipeService {
     private CategoryRepository categoryRepository;
     private UnitOfMeasureRepository unitOfMeasureRepository;
     private RecipeRepository recipeRepository;
+    private RecipeCommandToEntity recipeCommandToEntity;
+    private RecipeEntityToCommand recipeEntityToCommand;
 
     public RecipeServiceImpl(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository,
-                             RecipeRepository recipeRepository) {
+                             RecipeRepository recipeRepository, RecipeCommandToEntity recipeCommandToEntity,
+                             RecipeEntityToCommand recipeEntityToCommand) {
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToEntity = recipeCommandToEntity;
+        this.recipeEntityToCommand = recipeEntityToCommand;
     }
 
     @Override
@@ -54,6 +63,17 @@ public class RecipeServiceImpl implements RecipeService {
             throw new RuntimeException("Recipe Not Found.");
         }
         return recipeOptional.get();
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand saveRecipe(RecipeCommand recipeCommand) {
+        Recipe detachedRecipe = recipeCommandToEntity.convert(recipeCommand);
+
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+
+        log.debug("Saved Recipe Id is :" + savedRecipe.getId());
+        return recipeEntityToCommand.convert(savedRecipe);
     }
 
     private Sort sortByIdAsc() {
