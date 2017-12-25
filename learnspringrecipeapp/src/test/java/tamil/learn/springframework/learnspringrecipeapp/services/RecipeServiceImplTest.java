@@ -146,6 +146,15 @@ public class RecipeServiceImplTest {
         assertEquals(recipeCommand.getDescription(), recipeCommandReturned.getDescription());
     }
 
+    @Test
+    public void deleteRecipeById() {
+        Long recipeIdToDelete = RECIPE_ID;
+
+        recipeService.deleteRecipeById(recipeIdToDelete);
+
+        verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
+
     private RecipeCommand createRecipeCommand() {
         RecipeCommand recipeCommand = new RecipeCommand();
         recipeCommand.setId(RECIPE_ID);

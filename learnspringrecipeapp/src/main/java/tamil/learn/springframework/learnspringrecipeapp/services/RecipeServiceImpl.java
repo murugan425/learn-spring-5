@@ -83,6 +83,12 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeEntityToCommand.convert(getRecipeById(recipeId));
     }
 
+    @Override
+    public void deleteRecipeById(Long recipeId) {
+        log.debug("Deleting id: " + recipeId);
+        recipeRepository.deleteById(recipeId);
+    }
+
     private Sort sortByIdAsc() {
         return new Sort(Sort.Direction.ASC, "id");
     }
