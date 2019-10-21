@@ -17,6 +17,11 @@ import tamil.learn.springframework.learnwebservices.controller.vo.HelloBean;
 @RestController
 public class HelloController {
 
+	@RequestMapping(method = RequestMethod.GET, path = "ping")
+	public String pingTest() {
+		return "pong";
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path = "hello")
 	public String sayHello() {
 		return "Hello Murugan";
