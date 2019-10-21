@@ -3,6 +3,7 @@ package tamil.learn.springframework.learnwebservices.dao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,16 @@ public class UserDaoService {
 	}
 	
 	public User findUserById(int id) {
-		return users.stream().filter(user -> user.getId()==id).findAny().orElse(null);
+		Predicate<User> findById = user -> user.getId()==id;		
+		return users.stream().filter(findById).findAny().orElse(null);
+	}
+
+	public User deleteUserById(int id) {
+		Predicate<User> findById = user -> user.getId()==id;		
+		User user = users.stream().filter(findById).findAny().orElse(null);
+		if(null != user) {
+			users.removeIf(findById);
+		}
+		return user;
 	}
 }
