@@ -3,6 +3,8 @@ package tamil.learn.springframework.learnwebservices.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,7 @@ public class UserController {
 	};
 	
 	@PostMapping(path = "users", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> saveUser(@RequestBody User user) {
+	public ResponseEntity<User> saveUser(@Valid @RequestBody User user) {
 		User newuser = userService.save(user);		
 		URI uriLoc = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newuser.getId()).toUri();
 		return ResponseEntity.created(uriLoc).build();		
