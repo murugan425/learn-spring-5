@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,14 +29,14 @@ public class UserController {
 		return userService.findAllUsers();
 	};
 	
-	@RequestMapping(method = RequestMethod.POST, path = "users")
+	@PostMapping(path = "users")
 	public ResponseEntity<User> saveUser(@RequestBody User user) {
 		User newuser = userService.save(user);		
-		URI uriLoc = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(newuser.getId()).toUri();
+		URI uriLoc = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newuser.getId()).toUri();
 		return ResponseEntity.created(uriLoc).build();		
 	};
 	
-	@RequestMapping(method = RequestMethod.GET, path = "users/{id}")
+	@GetMapping(path = "users/{id}")
 	public User findUserById(@PathVariable int id) throws UserNotFoundException {
 		User user = userService.findUserById(id);
 		if(null == user) {
