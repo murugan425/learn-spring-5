@@ -26,7 +26,7 @@ public class ApplicationConfig {
 		return localeResolver;
 	}
 
-	@Bean
+	//@Bean
 	public ResourceBundleMessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasename("messages");
