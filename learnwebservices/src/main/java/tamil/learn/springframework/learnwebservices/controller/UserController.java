@@ -43,7 +43,7 @@ public class UserController {
 		return ResponseEntity.created(uriLoc).build();		
 	};
 	
-	@GetMapping(path = "users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "users/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public EntityModel<User> findUserById(@PathVariable int id) throws UserNotFoundException {
 		User user = userService.findUserById(id);
 		if(null == user) {

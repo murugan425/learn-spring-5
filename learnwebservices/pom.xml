@@ -28,10 +28,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	
-		<!-- HATEOAS - -->
+		<!-- HATEOAS -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		
+		<!-- XML FORMAT SUPPORT -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
 		
 		<dependency>
