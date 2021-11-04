@@ -1,0 +1,6 @@
+rabbitmq:
+  test:
+    queue: testqueue
+    exchange: testtopicexchg
+    routing:
+      key1: testroutekey1
